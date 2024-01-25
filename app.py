@@ -9,6 +9,17 @@ class LinkedList:
         self.head = new_node
         self.tail = new_node
         self.length = 1
+
+    def append(self,value):
+        new_node = Node(value)
+        if self.head is None:
+            self.head = new_node
+            self.next = None
+        else:
+            self.tail.next = new_node
+            self.tail = new_node
+
+        self.length += 1
     
     def print_list(self):
         temp = self.head 
@@ -18,5 +29,6 @@ class LinkedList:
 
 
 listed_1 = LinkedList(2)
-
+listed_1.append(4)
+listed_1.append(6)
 listed_1.print_list()
