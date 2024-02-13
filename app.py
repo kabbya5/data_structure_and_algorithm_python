@@ -32,6 +32,7 @@ class LinkedList:
             temp = temp.next
         self.tail = pre 
         self.tail.next = None
+        self.length -= 1
         
     
     def print_list(self):
