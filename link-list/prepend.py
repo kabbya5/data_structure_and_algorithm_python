@@ -47,12 +47,42 @@ class LinkList:
             self.head = None 
             self.tail = None 
 
-        print(temp.value)
+    def prepend(self,value):
+        new_node = Node(value)
+        if(self.length == 0):
+            self.head = new_node
+            self.tail = new_node
+        else:
+            new_node.next = self.head 
+            self.head = new_node
+        
+        self.length += 1
+
+        return True
+    
+    def pop_first(self):
+        if self.length == 0:
+            return None 
+        
+        temp = self.head 
+        self.head = self.head.next 
+        temp.next = None 
+        self.length -= 1 
+
+        if self.length == 0:
+            self.tail = None 
 
     
+        
+
 list = LinkList(4)
 list.append(3)
 list.append(7)
 list.pop()
+list.prepend(1)
+list.prepend(2)
+list.prepend(7)
+list.pop_first()
+list.pop_first()
 
 list.print()
