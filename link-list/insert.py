@@ -78,7 +78,7 @@ class LinkList:
         temp = self.head 
         for _ in range(index):
             temp = temp.next 
-        return temp.value
+        return temp
     
     def set_value(self,index,value):
         if index < 0:
@@ -99,7 +99,33 @@ class LinkList:
             current_index += 1 
         
         return False 
+    
+
+    def insert(self, index, value):
+        if index < 0 or index > self.length:
+            return False
         
+        if index == 0:
+            return self.prepend(value)
+        
+        if index == self.length:
+            return self.append(value)
+        
+        new_node = Node(value)
+        before = self.get(index-1)
+        after = before.next 
+
+        new_node.prev = before 
+        new_node.next = after 
+
+        before.next = new_node 
+        after.prev = new_node
+
+        self.length += 1
+
+        return True
+        
+
 
 list = LinkList(4)
 list.append(3)
@@ -110,4 +136,5 @@ list.prepend(7)
 list.print()
 print('new List')
 list.set_value(3,11)
+list.insert(2,5)
 list.print()
